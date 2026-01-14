@@ -1,7 +1,7 @@
 {
   "name": "bedelightful/task-scheduler",
   "type": "library",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "keywords": [
     "php",
     "hyperf"
@@ -51,7 +51,7 @@
   },
   "extra": {
     "hyperf": {
-      "config": "Delightful\\TaskScheduler\\ConfigProvider"
+      "config": "BeDelightful\\TaskScheduler\\ConfigProvider"
     },
     "branch-alias": {
       "dev-master": "0.1-dev"
