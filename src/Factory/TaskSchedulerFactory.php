@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+/**
+ * Copyright (c) Be Delightful , Distributed under the MIT software license
+ */
+
+namespace Delightful\TaskScheduler\Factory;
+
+use DateTime;
+use Delightful\TaskScheduler\Entity\TaskScheduler;
+use Delightful\TaskScheduler\Entity\TaskSchedulerCrontab;
+use Delightful\TaskScheduler\Entity\ValueObject\TaskSchedulerStatus;
+use Delightful\TaskScheduler\Repository\Persistence\Model\TaskSchedulerModel;
+
+class TaskSchedulerFactory
+{
+    public static function modelToEntity(TaskSchedulerModel $model): TaskScheduler
+    {
+        $entity = new TaskScheduler();
+        $entity->setId($model->id);
+        $entity->setEnvironment($model->environment);
+        $entity->setExternalId($model->external_id);
+        $entity->setName($model->name);
+        $entity->setExpectTime($model->expect_time);
+        $entity->setActualTime($model->actual_time);
+        $entity->setCostTime($model->cost_time);
+        $entity->setType($model->type);
+        $entity->setRetryTimes($model->retry_times);
+        $entity->setStatus(TaskSchedulerStatus::from($model->status));
+        $entity->setCallbackMethod($model->callback_method);
+        $entity->setCallbackParams($model->callback_params);
+        $entity->setRemark($model->remark);
+        $entity->setCreator($model->creator);
+        $entity->setCreatedAt($model->created_at);
+        return $entity;
+    }
+
+    public static function createByCrontab(TaskSchedulerCrontab $scheduleTaskCrontab, DateTime $expectTime): TaskScheduler
+    {
+        $entity = new TaskScheduler();
+        $entity->setEnvironment($scheduleTaskCrontab->getEnvironment());
+        $entity->setExternalId($scheduleTaskCrontab->getExternalId());
+        $entity->setName($scheduleTaskCrontab->getName());
+        $entity->setExpectTime($expectTime);
+        $entity->setType(1);
+        $entity->setRetryTimes($scheduleTaskCrontab->getRetryTimes());
+        $entity->setCallbackMethod($scheduleTaskCrontab->getCallbackMethod());
+        $entity->setCallbackParams($scheduleTaskCrontab->getCallbackParams());
+        $entity->setRemark($scheduleTaskCrontab->getRemark());
+        $entity->setCreator($scheduleTaskCrontab->getCreator());
+        $entity->setCreatedAt(new DateTime());
+        return $entity;
+    }
+}
