@@ -1,7 +1,7 @@
 {
   "name": "bedelightful/task-scheduler",
   "type": "library",
-  "license": "Apache-2.0",
+  "license": "Apache License 2.0",
   "keywords": [
     "php",
     "hyperf"
@@ -9,12 +9,12 @@
   "description": "",
   "autoload": {
     "psr-4": {
-      "BeDelightful\\TaskScheduler\\": "src/"
+      "Delightful\\TaskScheduler\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "BeDelightful\\TaskScheduler\\Test\\": "tests"
+      "Delightful\\TaskScheduler\\Test\\": "tests"
     }
   },
   "require": {
@@ -51,7 +51,7 @@
   },
   "extra": {
     "hyperf": {
-      "config": "BeDelightful\\TaskScheduler\\ConfigProvider"
+      "config": "Delightful\\TaskScheduler\\ConfigProvider"
     },
     "branch-alias": {
       "dev-master": "0.1-dev"
